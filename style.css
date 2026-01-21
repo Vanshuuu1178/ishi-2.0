@@ -1,0 +1,572 @@
+/* --- CSS VARIABLES & RESET --- */
+:root {
+    --hk-pink: #ff69b4;
+    /* Hot Pink */
+    --hk-light: #ffe4e1;
+    /* Misty Rose */
+    --hk-white: #ffffff;
+    --hk-text: #6d4c41;
+    /* Soft Brown text */
+    --hk-accent: #ffb7c5;
+    /* Cherry Blossom */
+    --hk-bow: #ff0000;
+    /* Classic Bow Red */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: var(--hk-light);
+    background-image: radial-gradient(var(--hk-white) 15%, transparent 16%),
+        radial-gradient(var(--hk-white) 15%, transparent 16%);
+    background-size: 60px 60px;
+    background-position: 0 0, 30px 30px;
+    /* Polka dot pattern */
+    color: var(--hk-text);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* --- HEADER & NAV --- */
+header {
+    background-color: var(--hk-white);
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.2);
+    border-bottom: 5px solid var(--hk-pink);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-family: 'Pacifico', cursive;
+    font-size: 2rem;
+    color: var(--hk-pink);
+    text-shadow: 2px 2px 0px var(--hk-light);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--hk-text);
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    background-color: var(--hk-pink);
+    color: var(--hk-white);
+    transform: scale(1.1) rotate(-2deg);
+}
+
+/* --- MAIN LAYOUT --- */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+section {
+    background: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+    padding: 2rem;
+    border-radius: 25px;
+    border: 3px solid var(--hk-accent);
+    box-shadow: 0 10px 25px rgba(255, 182, 193, 0.4);
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h2 {
+    font-family: 'Pacifico', cursive;
+    color: var(--hk-pink);
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+}
+
+/* --- IMAGES --- */
+.hello-kitty-decoration {
+    width: 150px;
+    animation: float 3s ease-in-out infinite;
+    margin-bottom: 1rem;
+}
+
+.graphic-placeholder {
+    font-size: 5rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.photo-frame {
+    position: relative;
+    display: inline-block;
+    margin: 20px 0;
+}
+
+.photo-frame img {
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 8px solid var(--hk-white);
+    outline: 5px dashed var(--hk-pink);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.photo-frame img:hover {
+    transform: scale(1.05) rotate(3deg);
+}
+
+.photo-frame::after {
+    content: '🎀';
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    font-size: 3rem;
+    filter: drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.1));
+    animation: wiggle 2s infinite;
+}
+
+/* --- LOVE NOTE --- */
+.love-note {
+    font-size: 1.2rem;
+    color: var(--hk-text);
+    background-color: #fff0f5;
+    padding: 2rem;
+    border-radius: 15px;
+    border: 2px dashed var(--hk-pink);
+    position: relative;
+}
+
+.love-note::before {
+    content: '❝';
+    font-size: 4rem;
+    color: var(--hk-accent);
+    position: absolute;
+    top: -20px;
+    left: 20px;
+}
+
+.signature {
+    font-family: 'Pacifico';
+    font-size: 1.5rem;
+    color: var(--hk-pink);
+}
+
+/* --- BUTTONS & MUSIC --- */
+.btn {
+    background-color: var(--hk-pink);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 5px 0 #d05291;
+    transition: all 0.2s;
+    margin-top: 10px;
+}
+
+.btn:active {
+    transform: translateY(5px);
+    box-shadow: none;
+}
+
+.music-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--hk-white);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border: 2px solid var(--hk-pink);
+    cursor: pointer;
+    z-index: 1000;
+    transition: transform 0.3s;
+}
+
+.music-toggle:hover {
+    transform: rotate(360deg);
+}
+
+/* --- ANIMATIONS --- */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes wiggle {
+
+    0%,
+    100% {
+        transform: rotate(-5deg);
+    }
+
+    50% {
+        transform: rotate(5deg);
+    }
+}
+
+/* --- WELCOME MODAL --- */
+#welcome-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    flex-direction: column;
+    transition: opacity 0.5s;
+}
+
+.modal-content {
+    text-align: center;
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal-title {
+    font-family: 'Pacifico';
+    color: var(--hk-pink);
+    font-size: 3rem;
+}
+
+.modal-text {
+    font-size: 1.2rem;
+    margin: 20px;
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+/* --- FOOTER --- */
+footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.9rem;
+    color: var(--hk-text);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 600px) {
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .photo-frame img {
+        width: 220px;
+        height: 220px;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+}
+
+.btn-secondary {
+    background-color: var(--hk-accent);
+    box-shadow: 0 5px 0 #d88cae;
+}
+
+.btn-secondary:active {
+    transform: translateY(5px);
+    box-shadow: none;
+}
+
+nav a.btn-secondary:hover {
+    background-color: var(--hk-pink);
+    color: var(--hk-white);
+    transform: scale(1.1) rotate(-2deg);
+}
+
+.photo-frame::after {
+    content: '🎀';
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    font-size: 3rem;
+    filter: drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.1));
+    animation: wiggle 2s infinite;
+    transform-origin: center;
+}
+
+@keyframes wiggle {
+
+    0%,
+    100% {
+        transform: rotate(-5deg);
+    }
+
+    50% {
+        transform: rotate(5deg);
+    }
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-50px) scale(1.5);
+        opacity: 0;
+    }
+}
+
+.timeline-scroll {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+}
+
+.memory-img {
+    height: 200px;
+    /* Fixed height */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.memory-img:hover {
+    transform: scale(1.1);
+}
+
+#bubble-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.bubble {
+    width: 40px;
+    height: 40px;
+    background: var(--hk-accent);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: inset -2px -2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.1s;
+}
+
+.bubble.popped {
+    background: transparent;
+    border: 2px dashed var(--hk-pink);
+    transform: scale(0.8);
+}
+
+/* Add a blinking cursor effect */
+#typewriter-text::after {
+    content: '|';
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Add these styles */
+.theme-toggle {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    /* Above music button */
+    background: var(--hk-white);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: 2px solid var(--hk-pink);
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* The "Sleep" Class - overrides default variables */
+body.sleep-mode {
+    --hk-pink: #d63384;
+    /* Darker Pink */
+    --hk-light: #2c0b1e;
+    /* Dark Purple Background */
+    --hk-white: #4a233a;
+    /* Muted Plum for boxes */
+    --hk-text: #ffe4e1;
+    /* Light text */
+    --hk-accent: #800080;
+    /* Purple accent */
+    background-image: radial-gradient(#ffffff 1px, transparent 1px), radial-gradient(#ffffff 1px, transparent 1px);
+    background-size: 50px 50px;
+    /* Looks like stars */
+}
+
+body {
+    /* 1. Go to a site like "flaticon" or find a 32x32 png icon url */
+    /* 2. Replace the URL below with a link to a small heart/bow icon */
+    cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym49.cur'), auto;
+}
+
+/* Change cursor when hovering over links/buttons */
+a,
+button,
+.btn {
+    cursor: url('https://cur.cursors-4u.net/symbols/sym-1/sym46.cur'), pointer;
+}
+
+.cube {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: spin 15s infinite linear;
+}
+
+.face {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border: 2px solid white;
+    opacity: 0.9;
+}
+
+.face img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Positioning the 6 sides */
+.front {
+    transform: translateZ(100px);
+}
+
+.back {
+    transform: rotateY(180deg) translateZ(100px);
+}
+
+.right {
+    transform: rotateY(90deg) translateZ(100px);
+}
+
+.left {
+    transform: rotateY(-90deg) translateZ(100px);
+}
+
+.top {
+    transform: rotateX(90deg) translateZ(100px);
+}
+
+.bottom {
+    transform: rotateX(-90deg) translateZ(100px);
+}
+
+@keyframes spin {
+    from {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+
+    to {
+        transform: rotateX(360deg) rotateY(360deg);
+    }
+}
+
+/* Pause on hover so she can look at the photo */
+.cube:hover {
+    animation-play-state: paused;
+    cursor: pointer;
+}
+
+
+.heart-btn {
+    font-size: 5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.1s;
+    animation: pulse 1s infinite;
+}
+
+.heart-btn:active {
+    transform: scale(0.9);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}

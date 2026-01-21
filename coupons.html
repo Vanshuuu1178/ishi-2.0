@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Redeem Your Coupons 🎟️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container" style="text-align: center;">
+        <h1>🎀 Love Coupons 🎀</h1>
+        <p>Click to redeem! (Valid forever)</p>
+
+        <div class="coupon-grid">
+            <div class="coupon" onclick="redeem(this)">
+                <h3>💆‍♀️ Call for an hour</h3>
+                <p>Good for mood refreshning</p>
+            </div>
+            <div class="coupon" onclick="redeem(this)">
+                <h3>🍕 vn wali chummi </h3>
+                <p> ( Gilli wali) </p>
+            </div>
+            <div class="coupon" onclick="redeem(this)">
+                <h3>🥺 Photooo</h3>
+                <p> Get a photo</p>
+            </div>
+        </div>
+
+        <br><br>
+        <a href="index.html" class="btn">⬅️ Back to Home</a>
+    </div>
+
+    <script>
+        function redeem(element) {
+            element.style.background = "#ccc";
+            element.innerHTML = "<h3>✅ REDEEMED</h3>";
+        }
+    </script>
+
+    <style>
+        .coupon-grid {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .coupon {
+            border: 2px dashed var(--hk-pink);
+            padding: 20px;
+            width: 200px;
+            cursor: pointer;
+            border-radius: 10px;
+            background: white;
+            transition: transform 0.2s;
+        }
+
+        .coupon:hover {
+            transform: scale(1.05);
+            background: #fff0f5;
+        }
+    </style>
+</body>
+
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Favorite Person 🎀</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ff69b4">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+
+    <script src="script.js" defer></script>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+
+<body>
+
+    <div id="security-screen"
+        style="position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:99999; display:flex; flex-direction:column; align-items:center; justify-content:center; color:#0f0; font-family:'Courier New', monospace;">
+        <h1 style="color:var(--hk-pink)">RESTRICTED ACCESS 🔒</h1>
+        <p>Biometric Scan Required</p>
+        <div id="fingerprint" onclick="accessGranted()"
+            style="width:80px; height:100px; border:2px solid var(--hk-pink); border-radius:40px; margin:20px; display:flex; align-items:center; justify-content:center; cursor:pointer; animation: pulse 2s infinite;">
+            👆
+        </div>
+        <p id="access-msg" style="opacity:0;">Identify Yourself...</p>
+    </div>
+
+    <div id="canvas-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div>
+
+    <header>
+        <div class="logo" id="typewriter-text"></div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#us">You</a></li>
+                <li><a href="#love">My Note</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <div id="welcome-overlay">
+        <div class="modal-content">
+            <h1 class="modal-title">Knock Knock!</h1>
+            <p class="modal-text">I made something special just for you...</p>
+            <button class="btn" onclick="enterSite()">Enter 💖</button>
+        </div>
+    </div>
+
+    <div class="theme-toggle" onclick="toggleTheme()" title="Sleep Mode">
+        🌙
+    </div>
+
+    <audio id="bg-music" loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="music-toggle" onclick="toggleMusic()" title="Play Music">
+        🎵
+    </div>
+
+    <div class="container">
+
+        <section id="home">
+            <span class="graphic-placeholder hello-kitty-decoration">😺</span>
+            <h2>Welcome to my bbg's FanPage💖</h2>
+            <p>A little corner of the internet designed with the cutest theme for the cutest girl muehehehe.</p>
+        </section>
+
+        <section id="reasons">
+            <h2>Why You Are Special 🎀</h2>
+            <div id="reason-display">Click the button below...</div>
+            <button class="btn" onclick="showReason()">Tell me why!</button>
+        </section>
+
+        <section id="heartbeat">
+            <h2>Feel My Heart 💓</h2>
+            <p>Press and hold the button below...</p>
+            <button class="heart-btn" onmousedown="startHeartbeat()" onmouseup="stopHeartbeat()"
+                ontouchstart="startHeartbeat()" ontouchend="stopHeartbeat()">
+                ❤️
+            </button>
+        </section>
+
+        <section id="weather-section">
+            <h2>Is it cold there for you? 🥶</h2>
+            <div id="weather-display">Checking the sky...</div>
+        </section>
+
+        <section id="us">
+            <div id="timer-container">
+                <h3>Time since I met you:</h3>
+                <div id="timer"></div>
+            </div>
+            <h2>The Star of the Show 🫣</h2>
+            <div class="photo-frame">
+                <img src="ayshi.jpg" alt="My Beautiful Girlfriend" id="gf-photo">
+            </div>
+            <p>Every time I see this smile, my day gets 1000000% brighter.</p>
+        </section>
+
+        <div style="margin-top: 50px; opacity: 0.5;">
+            <p>🔒 <span style="cursor: pointer; text-decoration: underline;" onclick="unlockSecret()">Top Secret
+                    Area</span></p>
+            <div id="secret-content" style="display: none; background: #fff; padding: 20px; border: 2px solid gold;">
+                <h3>You cracked the code! 🏆</h3>
+                <p>I am going to give you gilli pappi one day. That is the secret. 🫦</p>
+            </div>
+        </div>
+
+        <section id="love">
+            <h2>A Note From Bhondu</h2>
+            <div class="love-note">
+                <p>
+                    To my absolute favorite person in the world,
+                    <br><br>
+                    They say it's rare to find someone who understands you completely, but with you, it feels
+                    effortless. You aren't just my baikoo; you are genuinely the best girl I have ever met.
+                    Somewhere along the way, all the laughs and memories turned into me realizing that I never want to
+                    be without you.
+                    <br><br>
+                    You bring so much color into my life, and the thought of you leaving is something I don't even want
+                    to imagine. I want to be by your side for every high and every low. I love you so so so muchhhh, not
+                    just for the how
+                    amazing you are, but for the incredible person you are becoming. Please stay with me, because i
+                    never wanna lose you and
+                    my world is infinitely better when you are in it.
+                </p>
+                <br>
+                <p class="signature">Snipeee</p>
+                <p class="signature">Yours always</p>
+            </div>
+        </section>
+
+        <section id="cube-section"
+            style="perspective: 1000px; height: 400px; display: flex; align-items: center; justify-content: center;">
+            <div class="cube">
+                <div class="face front"><img src="ay1.JPG" alt="1"></div>
+                <div class="face back"><img src="ay2.JPG" alt="2"></div>
+                <div class="face right"><img src="ay3.JPG" alt="3"></div>
+                <div class="face left"><img src="ay4.jpeg" alt="4"></div>
+                <div class="face top"><img src="ay5.jpeg" alt="5"></div>
+                <div class="face bottom"><img src="ay6.jpeg" alt="6"></div>
+            </div>
+        </section>
+
+        <section id="letters">
+            <h2>Open When...</h2>
+            <div class="letter-buttons">
+                <button class="btn btn-secondary"
+                    onclick="alert('I am always with you, even when i am too away from you! Call me ASAP! 📞')">You Miss
+                    Me</button>
+                <button class="btn btn-secondary"
+                    onclick="alert('You are the strongest person I know. Take a deep breath. 😤')">You're
+                    Stressed</button>
+                <button class="btn btn-secondary"
+                    onclick="alert('Look in the mirror. That is the prettiest girl in the world! 🪞')">You Feel
+                    Insecure</button>
+            </div>
+        </section>
+    </div>
+
+    <section>
+        <h2>Scientifically Proven Data 🤓</h2>
+        <p> my love levels against youu jaaneman:</p>
+        <img src="aygph.png" alt="Graph showing love increasing"
+            style="width: 100%; border-radius: 15px; border: 3px solid var(--hk-pink);">
+    </section>
+
+    <section id="stress-relief">
+        <h2>Stressed? Pop some bubbles! 🫧</h2>
+        <div id="bubble-container"></div>
+        <button class="btn" onclick="resetBubbles()">Reset Bubbles 🔄</button>
+    </section>
+
+    <section id="game-zone">
+        <h2>Catch the Heart! 🏃‍♀️</h2>
+        <p>Score: <span id="score">0</span></p>
+        <div id="game-area"
+            style="position: relative; height: 300px; background: rgba(255,255,255,0.5); border: 2px dashed var(--hk-pink); border-radius: 15px; overflow: hidden;">
+            <div id="moving-heart" onclick="catchHeart()"
+                style="position: absolute; font-size: 30px; cursor: pointer; transition: top 0.5s, left 0.5s;">💖</div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Your Gifts 🎁</h2>
+        <p>I made some coupons for you to use...</p>
+        <a href="coupons.html" class="btn">Open Coupon Book 🎟️</a>
+    </section>
+
+    <section id="reply">
+        <h2>Send Bhondu a Message 💌</h2>
+        <form action="https://formspree.io/f/xwvvednz" method="POST" style="max-width: 400px; margin: 0 auto;">
+            <textarea name="message" placeholder="Write something sweet..."
+                style="width: 100%; height: 100px; padding: 10px; border: 2px solid var(--hk-pink); border-radius: 10px;"></textarea>
+            <br>
+            <button type="submit" class="btn">Send Love 🚀</button>
+        </form>
+    </section>
+
+    <section id="json-memories">
+        <h2>Memories from our Database 📂</h2>
+        <div id="memory-list">Loading...</div>
+    </section>
+
+    <script>
+        // This uses the "Fetch API" to get data from another language/file
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('memory-list');
+                container.innerHTML = ''; // Clear loading text
+
+                // Loop through the data
+                data.forEach(item => {
+                    const div = document.createElement('div');
+                    div.style.border = "1px solid pink";
+                    div.style.margin = "10px";
+                    div.style.padding = "10px";
+                    div.style.borderRadius = "10px";
+
+                    div.innerHTML = `<strong>${item.date}</strong>: <h3>${item.title}</h3> <p>${item.memory}</p>`;
+                    container.appendChild(div);
+                });
+            })
+            .catch(err => console.log("Error loading JSON:", err));
+    </script>
+
+    <footer>
+
+        <section style="text-align: center; margin-top: 50px;">
+            <h2>🚀 Enter the Virtual Dimension</h2>
+            <p>Put on your imaginary VR headset and walk through our memories.</p>
+
+            <a href="vrroom.html" class="btn">Enter VR Museum 🥽</a>
+        </section>
+
+        <p>Made with 💖 and a lot of coffee.</p>
+        <p>&copy; 2025 Asherjiiiiiholic🐱.</p>
+    </footer>
+
+</body>
+
+</html>

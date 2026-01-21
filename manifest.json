@@ -1,0 +1,20 @@
+{
+    "name": "My Love App 💖",
+    "short_name": "Bhondu's Love",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#ffe4e1",
+    "theme_color": "#ff69b4",
+    "icons": [
+        {
+            "src": "ayshi.jpg",
+            "sizes": "192x192",
+            "type": "image/jpeg"
+        },
+        {
+            "src": "ayshi.jpg",
+            "sizes": "512x512",
+            "type": "image/jpeg"
+        }
+    ]
+}
