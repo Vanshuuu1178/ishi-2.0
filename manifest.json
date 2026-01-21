@@ -7,14 +7,15 @@
     "theme_color": "#ff69b4",
     "icons": [
         {
-            "src": "ayshi.jpg",
+            "src": "ay5.jpeg",
             "sizes": "192x192",
             "type": "image/jpeg"
         },
         {
-            "src": "ayshi.jpg",
+            "src": "ay5.jpeg",
             "sizes": "512x512",
             "type": "image/jpeg"
         }
     ]
+
 }
